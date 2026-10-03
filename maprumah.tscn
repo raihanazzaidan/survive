@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cpbf5e1fg66n3" path="res://assets/maps/ext/ext.png" id="1_b4iw3"]
 [ext_resource type="PackedScene" uid="uid://dfhtj0myykdoy" path="res://scenes/mainPlayer.tscn" id="2_4whnx"]
 [ext_resource type="TileSet" uid="uid://da2r7iax5av6j" path="res://assets/maps/ext/outdoor_tileset.tres" id="2_vk5tc"]
+[ext_resource type="Script" uid="uid://cjh0kui6ufwcu" path="res://scripts/tpIntExt.gd" id="3_h30bc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4iw3"]
 texture = ExtResource("1_b4iw3")
@@ -13,6 +14,9 @@ texture_region_size = Vector2i(64, 64)
 [sub_resource type="TileSet" id="TileSet_n8tqc"]
 tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_b4iw3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_door_ext"]
+size = Vector2(80, 80)
 
 [node name="Node2D" type="Node2D" unique_id=1751810526]
 
@@ -28,9 +32,9 @@ tile_set = ExtResource("2_vk5tc")
 
 [node name="mainPlayer" parent="." unique_id=264173668 instance=ExtResource("2_4whnx")]
 z_index = 2
-position = Vector2(195, 163)
+position = Vector2(355, 83)
 
-[node name="Camera2D" type="Camera2D" parent="mainPlayer" unique_id=1249322501]
+[node name="Camera2D2" type="Camera2D" parent="mainPlayer" unique_id=1249322501]
 
 [node name="fence" type="TileMapLayer" parent="." unique_id=880510805]
 z_index = 1
@@ -59,3 +63,15 @@ tile_set = ExtResource("2_vk5tc")
 [node name="neighbor" type="TileMapLayer" parent="." unique_id=1806904361]
 tile_map_data = PackedByteArray("AADo//f/AwANAAMAAADo//j/AwANAAQAAADo//n/AwANAAUAAADo//r/AwANAAYAAADo//v/AwANAAcAAADo//z/AwANAAgAAADo//3/AwANAAkAAADo//7/AwANAAoAAADo////AwANAAsAAADp//b/AwAOAAIAAADp//f/AwAOAAMAAADp//j/AwAOAAQAAADp//n/AwAOAAUAAADp//r/AwAOAAYAAADp//v/AwAOAAcAAADp//z/AwAOAAgAAADp//3/AwAOAAkAAADp//7/AwAOAAoAAADp////AwAOAAsAAADq//b/AwAPAAIAAADq//f/AwAPAAMAAADq//j/AwAPAAQAAADq//n/AwAPAAUAAADq//r/AwAPAAYAAADq//v/AwAPAAcAAADq//z/AwAPAAgAAADq//3/AwAPAAkAAADq//7/AwAPAAoAAADq////AwAPAAsAAADr//b/AwAQAAIAAADr//f/AwAQAAMAAADr//j/AwAQAAQAAADr//n/AwAQAAUAAADr//r/AwAQAAYAAADr//v/AwAQAAcAAADr//z/AwAQAAgAAADr//3/AwAQAAkAAADr//7/AwAQAAoAAADr////AwAQAAsAAADs//b/AwARAAIAAADs//f/AwARAAMAAADs//j/AwARAAQAAADs//n/AwARAAUAAADs//r/AwARAAYAAADs//v/AwARAAcAAADs//z/AwARAAgAAADs//3/AwARAAkAAADs//7/AwARAAoAAADt//b/AwASAAIAAADt//f/AwASAAMAAADt//j/AwASAAQAAADt//n/AwASAAUAAADt//r/AwASAAYAAADt//v/AwASAAcAAADt//z/AwASAAgAAADt//3/AwASAAkAAADt//7/AwASAAoAAADu//b/AwATAAIAAADu//f/AwATAAMAAADu//j/AwATAAQAAADu//n/AwATAAUAAADu//r/AwATAAYAAADu//v/AwATAAcAAADu//z/AwATAAgAAADu//3/AwATAAkAAADu//7/AwATAAoAAADv//b/AwAUAAIAAADv//f/AwAUAAMAAADv//j/AwAUAAQAAADv//n/AwAUAAUAAADv//r/AwAUAAYAAADv//v/AwAUAAcAAADv//z/AwAUAAgAAADv//3/AwAUAAkAAADv//7/AwAUAAoAAADw//b/AwAVAAIAAADw//f/AwAVAAMAAADw//j/AwAVAAQAAADw//n/AwAVAAUAAADw//r/AwAVAAYAAADw//v/AwAVAAcAAADw//z/AwAVAAgAAADw//3/AwAVAAkAAADw//7/AwAVAAoAAADz/wcAAwANAAMAAADz/wgAAwANAAQAAADz/wkAAwANAAUAAADz/woAAwANAAYAAADz/wsAAwANAAcAAADz/wwAAwANAAgAAADz/w0AAwANAAkAAADz/w4AAwANAAoAAADz/w8AAwANAAsAAAD0/wYAAwAOAAIAAAD0/wcAAwAOAAMAAAD0/wgAAwAOAAQAAAD0/wkAAwAOAAUAAAD0/woAAwAOAAYAAAD0/wsAAwAOAAcAAAD0/wwAAwAOAAgAAAD0/w0AAwAOAAkAAAD0/w4AAwAOAAoAAAD0/w8AAwAOAAsAAAD1/wYAAwAPAAIAAAD1/wcAAwAPAAMAAAD1/wgAAwAPAAQAAAD1/wkAAwAPAAUAAAD1/woAAwAPAAYAAAD1/wsAAwAPAAcAAAD1/wwAAwAPAAgAAAD1/w0AAwAPAAkAAAD1/w4AAwAPAAoAAAD1/w8AAwAPAAsAAAD2/wYAAwAQAAIAAAD2/wcAAwAQAAMAAAD2/wgAAwAQAAQAAAD2/wkAAwAQAAUAAAD2/woAAwAQAAYAAAD2/wsAAwAQAAcAAAD2/wwAAwAQAAgAAAD2/w0AAwAQAAkAAAD2/w4AAwAQAAoAAAD2/w8AAwAQAAsAAAD3/wYAAwARAAIAAAD3/wcAAwARAAMAAAD3/wgAAwARAAQAAAD3/wkAAwARAAUAAAD3/woAAwARAAYAAAD3/wsAAwARAAcAAAD3/wwAAwARAAgAAAD3/w0AAwARAAkAAAD3/w4AAwARAAoAAAD4/wYAAwASAAIAAAD4/wcAAwASAAMAAAD4/wgAAwASAAQAAAD4/wkAAwASAAUAAAD4/woAAwASAAYAAAD4/wsAAwASAAcAAAD4/wwAAwASAAgAAAD4/w0AAwASAAkAAAD4/w4AAwASAAoAAAD5/wYAAwATAAIAAAD5/wcAAwATAAMAAAD5/wgAAwATAAQAAAD5/wkAAwATAAUAAAD5/woAAwATAAYAAAD5/wsAAwATAAcAAAD5/wwAAwATAAgAAAD5/w0AAwATAAkAAAD5/w4AAwATAAoAAAD6/wYAAwAUAAIAAAD6/wcAAwAUAAMAAAD6/wgAAwAUAAQAAAD6/wkAAwAUAAUAAAD6/woAAwAUAAYAAAD6/wsAAwAUAAcAAAD6/wwAAwAUAAgAAAD6/w0AAwAUAAkAAAD6/w4AAwAUAAoAAAD7/wYAAwAVAAIAAAD7/wcAAwAVAAMAAAD7/wgAAwAVAAQAAAD7/wkAAwAVAAUAAAD7/woAAwAVAAYAAAD7/wsAAwAVAAcAAAD7/wwAAwAVAAgAAAD7/w0AAwAVAAkAAAD7/w4AAwAVAAoAAAA=")
 tile_set = ExtResource("2_vk5tc")
+
+[node name="SpawnPintuA" type="Marker2D" parent="." unique_id=471505152 groups=["spawn_points"]]
+position = Vector2(219, 44)
+
+[node name="TeleportArea" type="Area2D" parent="." unique_id=1415540103]
+position = Vector2(219, 44)
+script = ExtResource("3_h30bc")
+target_scene = "res://interior.tscn"
+spawn_point_name = "TeleportArea"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportArea" unique_id=1937400334]
+shape = SubResource("RectangleShape2D_door_ext")

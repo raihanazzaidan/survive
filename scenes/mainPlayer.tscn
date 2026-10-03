@@ -1211,7 +1211,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
-size = Vector2(56, 119)
+size = Vector2(40, 98)
 
 [node name="mainPlayer" type="CharacterBody2D" unique_id=264173668]
 script = ExtResource("2_ls3gj")
@@ -1219,8 +1219,12 @@ metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=559425091]
 sprite_frames = SubResource("SpriteFrames_csub3")
-animation = &"walk_down1"
+animation = &"idle1"
+offset = Vector2(0, -65)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1537119067]
-position = Vector2(1, 7.5)
+position = Vector2(-2, -47)
 shape = SubResource("RectangleShape2D_csub3")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1865145736]
+zoom = Vector2(1.5, 1.5)
