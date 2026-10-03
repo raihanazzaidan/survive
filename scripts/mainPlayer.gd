@@ -8,8 +8,16 @@ const RUN_SPEED = 300.0
 var is_jumping = false
 
 func _physics_process(delta):
+	# Jika sedang transisi fade layar, hentikan pergerakan player
+	if GameManager.is_transitioning:
+		velocity = Vector2.ZERO
+		move_and_slide()
+		anim.play("idle1")
+		return
+
 	# 1. Ambil Input Arah
 	var direction = Input.get_vector("walk_left", "walk_right", "walk_up", "walk_down")
+
 	var current_speed = WALK_SPEED
 	
 	# 2. Cek Tombol Lari
@@ -54,3 +62,38 @@ func _physics_process(delta):
 		else:
 			anim.speed_scale = 1.0
 			anim.play("idle1")
+
+func _ready() -> void:
+	if not is_in_group("player"):
+		add_to_group("player")
+
+	# Cek apakah ada data spawn point yang tersimpan di GameManager
+	if GameManager.target_spawn_point != "":
+		var target_name = GameManager.target_spawn_point
+		GameManager.target_spawn_point = ""
+		
+		var spawned = false
+		# 1. Cari semua node di group "spawn_points"
+		var spawn_nodes = get_tree().get_nodes_in_group("spawn_points")
+		for node in spawn_nodes:
+			if node.name == target_name:
+				global_position = node.global_position
+				spawned = true
+				break
+		
+		# 2. Fallback jika node belum/tidak dimasukkan ke grup "spawn_points"
+		if not spawned:
+			var parent = get_parent()
+			if parent:
+				var node = parent.find_child(target_name, true, false)
+				if node and node is Node2D:
+					global_position = node.global_position
+					spawned = true
+		
+		if not spawned:
+			var current = get_tree().current_scene
+			if current:
+				var node = current.find_child(target_name, true, false)
+				if node and node is Node2D:
+					global_position = node.global_position
+					spawned = true
