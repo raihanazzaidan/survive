@@ -51,3 +51,8 @@ func _physics_process(delta):
 						anim.play("walk_up")
 		else:
 			anim.play("idle")
+
+
+func _on_sensor_tangga_naik_body_entered(body: Node2D) -> void:
+	if body.name == "char_day_1m":
+		body.global_position = $TitikLantai2.global_position
