@@ -1,6 +1,6 @@
 extends Area2D
 
-@export_file("*.tscn") var target_scene: String = "res://maprumah.tscn"
+@export_file("*.tscn") var target_scene: String = "res://scenes/maprumah.tscn"
 @export var spawn_point_name: String = "SpawnPintuA"
 
 var player_in_range: bool = false
