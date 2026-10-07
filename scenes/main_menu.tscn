@@ -1,0 +1,218 @@
+[gd_scene format=3 uid="uid://blin3ev73ptho"]
+
+[ext_resource type="Texture2D" uid="uid://rvlr35r4lvfx" path="res://assets/ui/bg/8.png" id="1_5dd4i"]
+[ext_resource type="Script" uid="uid://cstmojhn8viso" path="res://scripts/ui/parallax/main_menu.gd" id="1_a8gd2"]
+[ext_resource type="Texture2D" uid="uid://cm88hywq4m7t8" path="res://assets/ui/bg/7.png" id="2_lgwnu"]
+[ext_resource type="Script" uid="uid://briad3imf2vnq" path="res://scripts/ui/parallax/foreground.gd" id="3_flqon"]
+[ext_resource type="Texture2D" uid="uid://dpdak4calojg5" path="res://assets/ui/bg/6.png" id="4_rcqid"]
+[ext_resource type="Texture2D" uid="uid://8i6ncry1vwqf" path="res://assets/ui/bg/5.png" id="5_1ajci"]
+[ext_resource type="Script" uid="uid://cxbr4f6chtchy" path="res://scripts/ui/parallax/foreground_2.gd" id="5_5pajh"]
+[ext_resource type="Texture2D" uid="uid://cr0wcf7kbqj5c" path="res://assets/ui/bg/4.png" id="6_7b55j"]
+[ext_resource type="Script" uid="uid://bh7mkv42lwp5c" path="res://scripts/ui/parallax/bush_1.gd" id="6_lgwnu"]
+[ext_resource type="Texture2D" uid="uid://dhncgm62tg8rq" path="res://assets/ui/bg/3.png" id="7_5pajh"]
+[ext_resource type="Script" uid="uid://c5j2ax6nv2187" path="res://scripts/ui/parallax/bush_2.gd" id="8_7b55j"]
+[ext_resource type="Texture2D" uid="uid://d3t3os77cgu7d" path="res://assets/ui/bg/2.png" id="8_j7ex8"]
+[ext_resource type="Texture2D" uid="uid://1qpdfk4k4ckq" path="res://assets/ui/bg/1.png" id="9_a8gd2"]
+[ext_resource type="Script" uid="uid://dvphic4fy7b4d" path="res://scripts/ui/parallax/bush_3.gd" id="9_flqon"]
+[ext_resource type="Texture2D" uid="uid://c0mka186wt047" path="res://assets/char/char_day1m.png" id="10_hstxw"]
+[ext_resource type="Script" uid="uid://tr52xjrki7tr" path="res://scripts/ui/parallax/island.gd" id="11_1ajci"]
+[ext_resource type="Script" uid="uid://bjurdgi3b5pwj" path="res://scripts/ui/parallax/island_2.gd" id="12_rcqid"]
+[ext_resource type="Script" uid="uid://hehbev8ihjlf" path="res://scenes/animated_sprite_2d.gd" id="17_j7ex8"]
+[ext_resource type="Texture2D" uid="uid://bvqc4hqdi2oyk" path="res://assets/ui/logo.png" id="19_hstxw"]
+[ext_resource type="Texture2D" uid="uid://ckwwddphs7fkn" path="res://assets/ui/mainmenu/mulai.png" id="20_3wgol"]
+[ext_resource type="AudioStream" uid="uid://p6amiyact55m" path="res://assets/sfx/soundtrack.mp3" id="20_gw5y6"]
+[ext_resource type="Texture2D" uid="uid://cco6wfgb8mj0y" path="res://assets/ui/mainmenu/mulaipress.png" id="21_1acrt"]
+[ext_resource type="AudioStream" uid="uid://c340k30t36l5y" path="res://assets/sfx/rain.wav" id="21_svtp6"]
+[ext_resource type="Texture2D" uid="uid://d3hshtbb84f8v" path="res://assets/ui/mainmenu/keluar.png" id="22_1acrt"]
+[ext_resource type="AudioStream" uid="uid://blf4mfht5mcg1" path="res://assets/sfx/thunder.wav" id="22_svtp6"]
+[ext_resource type="Texture2D" uid="uid://0caam8uqrljn" path="res://assets/ui/mainmenu/keluarpress.png" id="22_vr8o3"]
+[ext_resource type="PackedScene" uid="uid://rj4dfjluy44w" path="res://scenes/fade_transition.tscn" id="27_vr8o3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8egab"]
+atlas = ExtResource("10_hstxw")
+region = Rect2(0, 0, 72, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gw5y6"]
+atlas = ExtResource("10_hstxw")
+region = Rect2(72, 0, 72, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_svtp6"]
+atlas = ExtResource("10_hstxw")
+region = Rect2(144, 0, 72, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dfpl"]
+atlas = ExtResource("10_hstxw")
+region = Rect2(216, 0, 72, 133)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qywvv"]
+atlas = ExtResource("10_hstxw")
+region = Rect2(288, 0, 72, 133)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_csub3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8egab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gw5y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_svtp6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dfpl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qywvv")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="MainMenu" type="Control" unique_id=657276946]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_a8gd2")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=994108165]
+position = Vector2(966.6, 531.5)
+scale = Vector2(5.58, 5.58)
+
+[node name="background" type="Sprite2D" parent="Node2D" unique_id=397034785]
+texture_filter = 1
+texture = ExtResource("1_5dd4i")
+
+[node name="foreground" type="Sprite2D" parent="Node2D" unique_id=276908131]
+texture_filter = 1
+texture = ExtResource("2_lgwnu")
+script = ExtResource("3_flqon")
+
+[node name="foreground2" type="Sprite2D" parent="Node2D" unique_id=544312563]
+texture_filter = 1
+texture = ExtResource("4_rcqid")
+script = ExtResource("5_5pajh")
+
+[node name="bush1" type="Sprite2D" parent="Node2D" unique_id=278721234]
+texture_filter = 1
+texture = ExtResource("5_1ajci")
+script = ExtResource("6_lgwnu")
+
+[node name="bush2" type="Sprite2D" parent="Node2D" unique_id=1430093730]
+texture_filter = 1
+texture = ExtResource("6_7b55j")
+script = ExtResource("8_7b55j")
+
+[node name="bush3" type="Sprite2D" parent="Node2D" unique_id=1759515926]
+texture_filter = 1
+texture = ExtResource("7_5pajh")
+script = ExtResource("9_flqon")
+
+[node name="island" type="Sprite2D" parent="Node2D" unique_id=2071184744]
+texture_filter = 1
+texture = ExtResource("8_j7ex8")
+script = ExtResource("11_1ajci")
+
+[node name="island2" type="Sprite2D" parent="Node2D" unique_id=972581517]
+texture_filter = 1
+texture = ExtResource("9_a8gd2")
+script = ExtResource("12_rcqid")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Node2D" unique_id=1794243065]
+visible = false
+position = Vector2(-173.2258, -95.25089)
+scale = Vector2(0.17921147, 0.17921147)
+color = Color(0.27058825, 0.32156864, 0.42352942, 0.29411766)
+
+[node name="WeatherLayer" type="Node2D" parent="Node2D" unique_id=139173856]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D" unique_id=19151719]
+texture_filter = 1
+position = Vector2(-155.30467, -1.8817291)
+scale = Vector2(0.53748524, 0.53748524)
+sprite_frames = SubResource("SpriteFrames_csub3")
+autoplay = "default"
+frame_progress = 0.8784404
+script = ExtResource("17_j7ex8")
+
+[node name="Logo" type="Sprite2D" parent="Node2D" unique_id=1953334565]
+texture_filter = 1
+position = Vector2(0.07165527, -60.483868)
+scale = Vector2(0.20196752, 0.20196745)
+texture = ExtResource("19_hstxw")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="." unique_id=1544990822]
+energy = 0.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.39607844)
+shadow_filter = 1
+shadow_filter_smooth = 1.5
+height = 1.0
+max_distance = 6593.0
+
+[node name="LightningFlash" type="ColorRect" parent="." unique_id=512334233]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="LightningTimer" type="Timer" parent="." unique_id=488037462]
+autostart = true
+
+[node name="Button_Manager" type="Control" parent="." unique_id=376538498]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Start" type="TextureButton" parent="Button_Manager" unique_id=959246337]
+layout_mode = 0
+offset_left = 799.0
+offset_top = 474.0
+offset_right = 1195.0
+offset_bottom = 607.0
+texture_normal = ExtResource("20_3wgol")
+texture_hover = ExtResource("21_1acrt")
+
+[node name="Quit" type="TextureButton" parent="Button_Manager" unique_id=1900730672]
+layout_mode = 0
+offset_left = 737.0
+offset_top = 729.0
+offset_right = 1232.0
+offset_bottom = 862.0
+texture_normal = ExtResource("22_1acrt")
+texture_hover = ExtResource("22_vr8o3")
+
+[node name="BGMPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1486423342]
+stream = ExtResource("20_gw5y6")
+
+[node name="RainPlayer" type="AudioStreamPlayer2D" parent="." unique_id=334296276]
+stream = ExtResource("21_svtp6")
+volume_db = -12.723
+
+[node name="ThunderPlayer" type="AudioStreamPlayer2D" parent="." unique_id=754742558]
+stream = ExtResource("22_svtp6")
+volume_db = -0.3
+
+[node name="Fade_transition" parent="." unique_id=836753239 instance=ExtResource("27_vr8o3")]
+visible = false
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 1978.0
+offset_bottom = 1117.0
+
+[node name="Fade_timer" type="Timer" parent="Fade_transition" unique_id=1771682256]
+
+[connection signal="timeout" from="LightningTimer" to="." method="_on_lightning_timer_timeout"]
+[connection signal="pressed" from="Button_Manager/Start" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Button_Manager/Quit" to="." method="_on_button_2_pressed"]
+[connection signal="timeout" from="Fade_transition/Fade_timer" to="." method="_on_fade_timer_timeout"]
