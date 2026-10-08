@@ -7,7 +7,16 @@ const RUN_SPEED = 300.0
 
 var is_jumping = false
 
+# --- TAMBAHAN: Variabel penanda cutscene (Ubah ke true jika langsung mulai di awal) ---
+var is_cutscene: bool = false 
+
 func _physics_process(delta):
+	# --- PERBAIKAN: Taruh blokir cutscene di PALING ATAS ---
+	# Ini mencegah GameManager menimpa animasi cutscene dengan "idle1"
+	if is_cutscene:
+		move_and_slide() 
+		return
+
 	# Jika sedang transisi fade layar, hentikan pergerakan player
 	if GameManager.is_transitioning:
 		velocity = Vector2.ZERO
@@ -97,3 +106,7 @@ func _ready() -> void:
 				if node and node is Node2D:
 					global_position = node.global_position
 					spawned = true
+
+# --- TAMBAHAN: Fungsi untuk dipanggil saat cutscene selesai ---
+func mulai_main_normal():
+	is_cutscene = false
