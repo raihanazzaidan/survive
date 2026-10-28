@@ -1211,9 +1211,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
-size = Vector2(40, 98)
+size = Vector2(37, 74)
 
 [node name="mainPlayer" type="CharacterBody2D" unique_id=264173668]
+y_sort_enabled = true
 script = ExtResource("2_ls3gj")
 metadata/_edit_group_ = true
 
@@ -1223,7 +1224,7 @@ animation = &"idle1"
 offset = Vector2(0, -65)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1537119067]
-position = Vector2(-2, -47)
+position = Vector2(-0.5, -35)
 shape = SubResource("RectangleShape2D_csub3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1865145736]
