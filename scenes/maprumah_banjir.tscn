@@ -67,13 +67,13 @@ tile_map_data = PackedByteArray("AADo//b/AwABAAMAAADo//f/AwABAAQAAADo//j/AwABAAU
 tile_set = ExtResource("2_hly83")
 
 [node name="SpawnPintuA" type="Marker2D" parent="." unique_id=471505152 groups=["spawn_points"]]
-position = Vector2(219, 44)
+position = Vector2(219, 90)
 
 [node name="TeleportArea" type="Area2D" parent="." unique_id=1415540103]
 position = Vector2(219, 44)
 script = ExtResource("4_q7ppj")
 target_scene = "uid://dede6uy6eajjn"
-spawn_point_name = "TeleportArea"
+spawn_point_name = "SpawnPintuInterior"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportArea" unique_id=1937400334]
 shape = SubResource("RectangleShape2D_door_ext")

@@ -3,6 +3,7 @@ extends Node
 # Menyimpan nama/ID checkpoint atau spawn point tujuan
 var target_spawn_point: String = ""
 var is_transitioning: bool = false
+var has_played_intro_cutscene: bool = false
 
 var _canvas_layer: CanvasLayer
 var _fade_rect: ColorRect
