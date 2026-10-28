@@ -11,13 +11,10 @@ var is_jumping = false
 var is_cutscene: bool = false 
 
 func _physics_process(delta):
-	# --- PERBAIKAN: Taruh blokir cutscene di PALING ATAS ---
-	# Ini mencegah GameManager menimpa animasi cutscene dengan "idle1"
 	if is_cutscene:
 		move_and_slide() 
 		return
 
-	# Jika sedang transisi fade layar, hentikan pergerakan player
 	if GameManager.is_transitioning:
 		velocity = Vector2.ZERO
 		move_and_slide()
@@ -107,6 +104,14 @@ func _ready() -> void:
 					global_position = node.global_position
 					spawned = true
 
-# --- TAMBAHAN: Fungsi untuk dipanggil saat cutscene selesai ---
+func mulai_cutscene():
+	is_cutscene = true
+	if anim:
+		anim.speed_scale = 1.0
+		anim.play("walk_down1")
+
 func mulai_main_normal():
 	is_cutscene = false
+	if anim:
+		anim.speed_scale = 1.0
+		anim.play("idle1")

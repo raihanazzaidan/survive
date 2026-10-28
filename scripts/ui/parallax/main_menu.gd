@@ -54,6 +54,8 @@ func _on_lightning_timer_timeout() -> void:
 
 func _on_button_pressed() -> void:
 	button_type = "start"
+	GameManager.has_played_intro_cutscene = false
+	GameManager.target_spawn_point = ""
 	$Fade_transition.show()
 	$Fade_transition/Fade_timer.start()
 	$Fade_transition/AnimationPlayer.play("Fade_in")
