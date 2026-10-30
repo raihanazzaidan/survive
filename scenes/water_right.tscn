@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://caduvbbeyl1d6"]
+
+[ext_resource type="Texture2D" uid="uid://ntp2iyemov7b" path="res://assets/maps/ext/water.png" id="1_sk0sp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfuog"]
+atlas = ExtResource("1_sk0sp")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji4gp"]
+atlas = ExtResource("1_sk0sp")
+region = Rect2(576, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5whws"]
+atlas = ExtResource("1_sk0sp")
+region = Rect2(960, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sndci"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfuog")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji4gp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5whws")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WaterRight" type="AnimatedSprite2D" unique_id=1831722149]
+sprite_frames = SubResource("SpriteFrames_sndci")
+autoplay = "default"
