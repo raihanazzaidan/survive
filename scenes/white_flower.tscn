@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://xi06ycccfqbu"]
+
+[ext_resource type="Texture2D" uid="uid://dsokohdddvmvn" path="res://assets/maps/ext/whiteflower.png" id="1_cy6vk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3natd"]
+atlas = ExtResource("1_cy6vk")
+region = Rect2(0, 0, 131, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0068"]
+atlas = ExtResource("1_cy6vk")
+region = Rect2(786, 0, 131, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5b1qn"]
+atlas = ExtResource("1_cy6vk")
+region = Rect2(1179, 0, 131, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pp45y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3natd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0068")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5b1qn")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WhiteFlower" type="AnimatedSprite2D" unique_id=300333628]
+sprite_frames = SubResource("SpriteFrames_pp45y")
+autoplay = "default"
