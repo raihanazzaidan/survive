@@ -4,6 +4,27 @@
 [ext_resource type="TileSet" uid="uid://da2r7iax5av6j" path="res://assets/maps/ext/outdoor_tileset.tres" id="1_xfrrm"]
 [ext_resource type="Script" uid="uid://bl6t88q23f65o" path="res://scripts/storm_controller.gd" id="2_18k4s"]
 [ext_resource type="PackedScene" uid="uid://dfhtj0myykdoy" path="res://scenes/mainPlayer.tscn" id="2_cwbmg"]
+[ext_resource type="Script" uid="uid://dx6au4i1aq20w" path="res://scripts/telejembatan.gd" id="4_mk7ll"]
+[ext_resource type="Script" uid="uid://ck76y45jun6m2" path="res://scripts/telebanjir.gd" id="5_v7xt4"]
+[ext_resource type="Script" uid="uid://cd5p32055pt1a" path="res://scripts/telechoosenpath.gd" id="6_ncx4k"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
+size = Vector2(83.5, 167)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihjpi"]
+size = Vector2(1872, 333)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqtul"]
+size = Vector2(472, 157)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n8tqc"]
+size = Vector2(101, 1845)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkj6s"]
+size = Vector2(2337, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncx4k"]
+size = Vector2(217.5, 1249)
 
 [node name="Node2D" type="Node2D" unique_id=487094545]
 y_sort_enabled = true
@@ -25,7 +46,31 @@ tile_map_data = PackedByteArray("AAD4//b/AQAHAAMAAAD///n/AQAEAAAAAAASAAMAAQAHAAE
 tile_set = ExtResource("1_xfrrm")
 
 [node name="mainPlayer" parent="." unique_id=264173668 instance=ExtResource("2_cwbmg")]
-position = Vector2(-600, -8)
+position = Vector2(-600, -24)
+
+[node name="TeleportArea2" type="Area2D" parent="." unique_id=1062268910]
+position = Vector2(155, -780)
+script = ExtResource("4_mk7ll")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TeleportArea2" unique_id=1955108791]
+position = Vector2(1277, 748)
+shape = SubResource("RectangleShape2D_csub3")
+
+[node name="TeleportArea3" type="Area2D" parent="." unique_id=316954708]
+position = Vector2(155, -780)
+script = ExtResource("5_v7xt4")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TeleportArea3" unique_id=932731396]
+position = Vector2(1277, 1196)
+shape = SubResource("RectangleShape2D_csub3")
+
+[node name="TeleportArea4" type="Area2D" parent="." unique_id=1637063031]
+position = Vector2(155, -780)
+script = ExtResource("6_ncx4k")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="TeleportArea4" unique_id=1016666896]
+position = Vector2(1277, 300)
+shape = SubResource("RectangleShape2D_csub3")
 
 [node name="WeatherLayer" type="Node2D" parent="." unique_id=1041869989]
 z_index = 10
@@ -33,5 +78,43 @@ script = ExtResource("2_18k4s")
 max_strike_interval = 10.0
 rain_volume_db = -9.0
 thunder_volume_db = -2.0
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1123437118]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=318335795]
+position = Vector2(536, -918.5)
+shape = SubResource("RectangleShape2D_ihjpi")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1322422514]
+position = Vector2(100, -702.5)
+shape = SubResource("RectangleShape2D_nqtul")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=35421090]
+position = Vector2(-693.5, -194.5)
+shape = SubResource("RectangleShape2D_n8tqc")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=1777271587]
+position = Vector2(1520, -216)
+shape = SubResource("RectangleShape2D_n8tqc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=1436551551]
+position = Vector2(424, 672)
+shape = SubResource("RectangleShape2D_tkj6s")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=1522364268]
+position = Vector2(416, -1144)
+shape = SubResource("RectangleShape2D_tkj6s")
+
+[node name="popUpUI" type="Area2D" parent="." unique_id=1150101224]
+position = Vector2(219, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="popUpUI" unique_id=1915774989]
+position = Vector2(181, -44.5)
+shape = SubResource("RectangleShape2D_ncx4k")
+
+[connection signal="body_entered" from="TeleportArea2" to="TeleportArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="TeleportArea3" to="TeleportArea3" method="_on_body_entered"]
+[connection signal="body_entered" from="TeleportArea4" to="TeleportArea4" method="_on_body_entered"]
+[connection signal="body_entered" from="popUpUI" to="popUpUI" method="_on_body_entered"]
 
 [editable path="mainPlayer"]
