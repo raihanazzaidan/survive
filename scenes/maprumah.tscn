@@ -21,6 +21,9 @@ sources/0 = SubResource("TileSetAtlasSource_b4iw3")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_door_ext"]
 size = Vector2(80, 172)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tkj6s"]
+size = Vector2(217.5, 98)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
 size = Vector2(669, 292)
 
@@ -93,7 +96,7 @@ tile_map_data = PackedByteArray("AADo//f/AwANAAMAAADo//j/AwANAAQAAADo//n/AwANAAU
 tile_set = ExtResource("2_vk5tc")
 
 [node name="mainPlayer" parent="." unique_id=264173668 instance=ExtResource("2_4whnx")]
-position = Vector2(355, 83)
+position = Vector2(228, 118)
 
 [node name="AnimatedSprite2D" parent="mainPlayer" index="0" unique_id=559425091]
 animation = &"run1"
@@ -117,6 +120,13 @@ script = ExtResource("6_bavhc")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportArea2" unique_id=1262076671]
 position = Vector2(1270, 303)
 shape = SubResource("RectangleShape2D_door_ext")
+
+[node name="popUpUI" type="Area2D" parent="." unique_id=1759572522]
+position = Vector2(219, 44)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="popUpUI" unique_id=1259134676]
+position = Vector2(13.25, 180)
+shape = SubResource("RectangleShape2D_tkj6s")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=378552810]
 
@@ -168,5 +178,6 @@ rain_volume_db = -9.0
 thunder_volume_db = -2.0
 
 [connection signal="body_entered" from="TeleportArea2" to="TeleportArea2" method="_on_body_entered"]
+[connection signal="body_entered" from="popUpUI" to="popUpUI" method="_on_body_entered"]
 
 [editable path="mainPlayer"]
