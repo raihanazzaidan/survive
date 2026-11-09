@@ -10,6 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bxxuptbjwfig8" path="res://scenes/interior_item.tscn" id="8_u6j2e"]
 [ext_resource type="Resource" uid="uid://dujksyo1w8lqx" path="res://inventory/item/senter.tres" id="9_u6j2e"]
 [ext_resource type="Resource" uid="uid://n64o4p2danke" path="res://inventory/item/p3k.tres" id="10_s858b"]
+[ext_resource type="Resource" uid="uid://d01uvie27v55k" path="res://inventory/item/radio.tres" id="11_xhkop"]
+[ext_resource type="Resource" uid="uid://bw7vr82hqfsp7" path="res://inventory/item/sleepingbag.tres" id="12_m15wt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
 size = Vector2(115, 145)
@@ -282,5 +284,13 @@ item_data = ExtResource("9_u6j2e")
 [node name="InteriorItem2" parent="." unique_id=421907241 instance=ExtResource("8_u6j2e")]
 position = Vector2(188, -667)
 item_data = ExtResource("10_s858b")
+
+[node name="InteriorItem3" parent="." unique_id=133136697 instance=ExtResource("8_u6j2e")]
+position = Vector2(220, -95)
+item_data = ExtResource("11_xhkop")
+
+[node name="InteriorItem4" parent="." unique_id=63473974 instance=ExtResource("8_u6j2e")]
+position = Vector2(425, -295)
+item_data = ExtResource("12_m15wt")
 
 [editable path="mainPlayer"]

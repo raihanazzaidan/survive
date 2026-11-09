@@ -16,16 +16,11 @@ func update_slots():
 
 func _process(delta):
 	if Input.is_action_just_pressed("inventory"):
-		# Cek status tas dari GameManager
-		if GameManager.has_backpack == false:
-			print("Cari tas terlebih dahulu!") 
-			return # Gagalkan pembukaan UI
-			
 		if is_open:
 			close()
 		else:
 			open()
-			
+
 func open():
 	update_slots()
 	visible = true
