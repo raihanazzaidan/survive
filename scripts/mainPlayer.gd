@@ -4,10 +4,9 @@ const WALK_SPEED = 200.0
 const RUN_SPEED = 300.0
 
 @onready var anim = $AnimatedSprite2D
-
+@export var inv: Inv
 var is_jumping = false
 
-# --- TAMBAHAN: Variabel penanda cutscene (Ubah ke true jika langsung mulai di awal) ---
 var is_cutscene: bool = false 
 
 func _physics_process(delta):
@@ -115,3 +114,6 @@ func mulai_main_normal():
 	if anim:
 		anim.speed_scale = 1.0
 		anim.play("idle1")
+
+func collect(item):
+	inv.insert(item)

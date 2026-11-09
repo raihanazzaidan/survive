@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://b6uevqkghkrhp" path="res://scripts/mainPlayer.gd" id="2_ls3gj"]
 [ext_resource type="SpriteFrames" uid="uid://cl70bbxvvqf18" path="res://assets/char/spritechar.tres" id="2_usxno"]
+[ext_resource type="Resource" uid="uid://cludjbo1b08tt" path="res://inventory/playerInv.tres" id="2_x4012"]
+[ext_resource type="PackedScene" uid="uid://bu752jc26qefw" path="res://inventory/inv_ui.tscn" id="4_j6ac0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
 size = Vector2(37, 74)
@@ -9,6 +11,7 @@ size = Vector2(37, 74)
 [node name="mainPlayer" type="CharacterBody2D" unique_id=264173668]
 y_sort_enabled = true
 script = ExtResource("2_ls3gj")
+inv = ExtResource("2_x4012")
 metadata/_edit_group_ = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=559425091]
@@ -21,3 +24,7 @@ position = Vector2(-0.5, -35)
 shape = SubResource("RectangleShape2D_csub3")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1865145736]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=981958504]
+
+[node name="InvUI" parent="CanvasLayer" unique_id=324246958 instance=ExtResource("4_j6ac0")]

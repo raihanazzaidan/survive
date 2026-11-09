@@ -4,7 +4,7 @@ extends Node
 var target_spawn_point: String = ""
 var is_transitioning: bool = false
 var has_played_intro_cutscene: bool = false
-
+var has_backpack: bool = false
 var _canvas_layer: CanvasLayer
 var _fade_rect: ColorRect
 

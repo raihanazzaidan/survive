@@ -7,6 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://crbcixkguao2f" path="res://scenes/items.tscn" id="4_4aljj"]
 [ext_resource type="PackedScene" uid="uid://rj4dfjluy44w" path="res://scenes/fade_transition.tscn" id="5_bxric"]
 [ext_resource type="Script" uid="uid://bl6t88q23f65o" path="res://scripts/storm_controller.gd" id="7_v3oak"]
+[ext_resource type="PackedScene" uid="uid://bxxuptbjwfig8" path="res://scenes/interior_item.tscn" id="8_u6j2e"]
+[ext_resource type="Resource" uid="uid://dujksyo1w8lqx" path="res://inventory/item/senter.tres" id="9_u6j2e"]
+[ext_resource type="Resource" uid="uid://n64o4p2danke" path="res://inventory/item/p3k.tres" id="10_s858b"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
 size = Vector2(115, 145)
@@ -242,6 +245,9 @@ position = Vector2(515, -602)
 [node name="AnimatedSprite2D" parent="mainPlayer" index="0" unique_id=559425091]
 animation = &"walk_down1"
 
+[node name="Camera2D" parent="mainPlayer" index="2" unique_id=1865145736]
+zoom = Vector2(2, 2)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=43481869]
 libraries/ = SubResource("AnimationLibrary_v3oak")
 
@@ -268,5 +274,13 @@ enable_camera_shake = false
 enable_storm_darkness = false
 rain_volume_db = -9.0
 thunder_volume_db = -2.0
+
+[node name="InteriorItem" parent="." unique_id=1836777011 instance=ExtResource("8_u6j2e")]
+position = Vector2(217, -226)
+item_data = ExtResource("9_u6j2e")
+
+[node name="InteriorItem2" parent="." unique_id=421907241 instance=ExtResource("8_u6j2e")]
+position = Vector2(188, -667)
+item_data = ExtResource("10_s858b")
 
 [editable path="mainPlayer"]
