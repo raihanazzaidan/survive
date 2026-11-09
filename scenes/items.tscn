@@ -187,7 +187,6 @@ metadata/_edit_group_ = true
 sprite_frames = SubResource("SpriteFrames_8o58o")
 animation = &"emergency_bag"
 autoplay = "emergency_bag"
-frame_progress = 0.6829365
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1194879409]
 position = Vector2(-1.5, 2)
