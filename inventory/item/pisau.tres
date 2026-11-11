@@ -9,5 +9,9 @@ region = Rect2(348, 142, 11, 34)
 
 [resource]
 script = ExtResource("1_efk4j")
+name = "Pisau"
 texture = SubResource("AtlasTexture_sh382")
+description = "Alat tajam berukuran kecil yang mudah dibawa."
+importance = 2
+importance_reason = "Benda ini sangat berguna, tapi sangat tajam. Jadi sebaiknya minta tolong orang dewasa saat menggunakannya agar tidak terluka."
 metadata/_custom_type_script = "uid://cr1j0ooxyu2dc"

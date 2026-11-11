@@ -9,5 +9,9 @@ region = Rect2(86, 267, 21, 36)
 
 [resource]
 script = ExtResource("1_cocxx")
+name = "Radio Portable"
 texture = SubResource("AtlasTexture_s858b")
+description = "Radio portabel yang menyala tanpa listrik rumah."
+importance = 0
+importance_reason = "Saat listrik mati, radio tetap bisa menerima peringatan dan arahan resmi."
 metadata/_custom_type_script = "uid://cr1j0ooxyu2dc"

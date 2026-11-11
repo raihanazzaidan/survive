@@ -322,8 +322,14 @@ texture = SubResource("GradientTexture2D_8o58o")
 
 [node name="InteriorItem5" parent="." unique_id=933219534 instance=ExtResource("8_u6j2e")]
 z_index = 1
-position = Vector2(10, -706)
+position = Vector2(10, -716)
 item_data = ExtResource("13_kb8ai")
+
+[node name="PointLight2D" type="PointLight2D" parent="InteriorItem5" unique_id=897554674]
+z_index = -1
+color = Color(1, 0.09019608, 0, 1)
+energy = 1.6
+texture = SubResource("GradientTexture2D_8o58o")
 
 [node name="InteriorItem6" parent="." unique_id=895121103 instance=ExtResource("8_u6j2e")]
 position = Vector2(195, -667)

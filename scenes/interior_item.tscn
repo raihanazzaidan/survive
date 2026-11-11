@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cfnh11r1ux48s" path="res://scripts/interior_item.gd" id="1_f6w8q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8o58o"]
-radius = 33.01515
+radius = 61.0
 
 [node name="InteriorItem" type="Area2D" unique_id=1836777011]
 script = ExtResource("1_f6w8q")

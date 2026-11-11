@@ -9,6 +9,8 @@ region = Rect2(208, 272, 32, 32)
 
 [resource]
 script = ExtResource("1_lrjpq")
-name = "senter"
+name = "Senter"
 texture = SubResource("AtlasTexture_vr8o3")
+description = "Alat untuk menerangi tempat yang gelap"
+importance_reason = "Senter digunakan untuk membantu melihat jalan saat evakuasi di tempat yang gelap."
 metadata/_custom_type_script = "uid://cr1j0ooxyu2dc"
