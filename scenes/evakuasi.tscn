@@ -4,12 +4,16 @@
 [ext_resource type="Script" uid="uid://dgey3smojgga5" path="res://scripts/evakuasi.gd" id="1_lryp1"]
 [ext_resource type="PackedScene" uid="uid://dfhtj0myykdoy" path="res://scenes/mainPlayer.tscn" id="2_a61e3"]
 [ext_resource type="Script" uid="uid://bl6t88q23f65o" path="res://scripts/storm_controller.gd" id="4_x8ldx"]
+[ext_resource type="Script" uid="uid://cke21sb1fqjpp" path="res://scripts/teleport_area_2.gd" id="5_jprrw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
 size = Vector2(2645, 62)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ihjpi"]
 size = Vector2(317, 1447)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8o58o"]
+size = Vector2(20, 38.25)
 
 [node name="evakuasi" type="Node2D" unique_id=2028597436]
 y_sort_enabled = true
@@ -62,3 +66,13 @@ show_lightning_bolts = false
 max_strike_interval = 10.0
 rain_volume_db = -9.0
 thunder_volume_db = -2.0
+
+[node name="TeleportKembali" type="Area2D" parent="." unique_id=1867012851]
+script = ExtResource("5_jprrw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TeleportKembali" unique_id=1467490147]
+position = Vector2(-16, 480)
+scale = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_8o58o")
+
+[connection signal="body_entered" from="TeleportKembali" to="TeleportKembali" method="_on_body_entered"]
