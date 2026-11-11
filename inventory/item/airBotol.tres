@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" format=3 uid="uid://deiu678sg4o1w"]
+
+[ext_resource type="Script" uid="uid://cr1j0ooxyu2dc" path="res://inventory/inventory_item.gd" id="1_yvg8v"]
+[ext_resource type="Texture2D" uid="uid://b4tpgvtasy4y4" path="res://assets/items/items-1.png" id="2_sh382"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvg8v"]
+atlas = ExtResource("2_sh382")
+region = Rect2(280, 82, 15, 30)
+
+[resource]
+script = ExtResource("1_yvg8v")
+texture = SubResource("AtlasTexture_yvg8v")
+metadata/_custom_type_script = "uid://cr1j0ooxyu2dc"

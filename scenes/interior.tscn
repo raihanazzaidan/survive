@@ -12,6 +12,8 @@
 [ext_resource type="Resource" uid="uid://n64o4p2danke" path="res://inventory/item/p3k.tres" id="10_s858b"]
 [ext_resource type="Resource" uid="uid://d01uvie27v55k" path="res://inventory/item/radio.tres" id="11_xhkop"]
 [ext_resource type="Resource" uid="uid://bw7vr82hqfsp7" path="res://inventory/item/sleepingbag.tres" id="12_m15wt"]
+[ext_resource type="Resource" uid="uid://cv2bmldwso1hu" path="res://inventory/item/pisau.tres" id="13_kb8ai"]
+[ext_resource type="Resource" uid="uid://deiu678sg4o1w" path="res://inventory/item/airBotol.tres" id="14_0bshu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
 size = Vector2(115, 145)
@@ -281,16 +283,56 @@ thunder_volume_db = -2.0
 position = Vector2(217, -226)
 item_data = ExtResource("9_u6j2e")
 
+[node name="PointLight2D" type="PointLight2D" parent="InteriorItem" unique_id=203312641]
+z_index = -1
+color = Color(1, 0.09019608, 0, 1)
+energy = 1.6
+texture = SubResource("GradientTexture2D_8o58o")
+
 [node name="InteriorItem2" parent="." unique_id=421907241 instance=ExtResource("8_u6j2e")]
-position = Vector2(188, -667)
+z_index = 1
+position = Vector2(-102, -278)
 item_data = ExtResource("10_s858b")
+
+[node name="PointLight2D" type="PointLight2D" parent="InteriorItem2" unique_id=1463201064]
+z_index = -1
+color = Color(1, 0.09019608, 0, 1)
+energy = 1.6
+texture = SubResource("GradientTexture2D_8o58o")
 
 [node name="InteriorItem3" parent="." unique_id=133136697 instance=ExtResource("8_u6j2e")]
 position = Vector2(220, -95)
 item_data = ExtResource("11_xhkop")
 
+[node name="PointLight2D" type="PointLight2D" parent="InteriorItem3" unique_id=853994407]
+z_index = -1
+color = Color(1, 0.09019608, 0, 1)
+energy = 1.6
+texture = SubResource("GradientTexture2D_8o58o")
+
 [node name="InteriorItem4" parent="." unique_id=63473974 instance=ExtResource("8_u6j2e")]
 position = Vector2(425, -295)
 item_data = ExtResource("12_m15wt")
+
+[node name="PointLight2D" type="PointLight2D" parent="InteriorItem4" unique_id=1832862169]
+z_index = -1
+color = Color(1, 0.09019608, 0, 1)
+energy = 1.6
+texture = SubResource("GradientTexture2D_8o58o")
+
+[node name="InteriorItem5" parent="." unique_id=933219534 instance=ExtResource("8_u6j2e")]
+z_index = 1
+position = Vector2(10, -706)
+item_data = ExtResource("13_kb8ai")
+
+[node name="InteriorItem6" parent="." unique_id=895121103 instance=ExtResource("8_u6j2e")]
+position = Vector2(195, -667)
+item_data = ExtResource("14_0bshu")
+
+[node name="PointLight2D" type="PointLight2D" parent="InteriorItem6" unique_id=1073274448]
+z_index = -1
+color = Color(1, 0.09019608, 0, 1)
+energy = 1.6
+texture = SubResource("GradientTexture2D_8o58o")
 
 [editable path="mainPlayer"]

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfhtj0myykdoy" path="res://scenes/mainPlayer.tscn" id="2_cwbmg"]
 [ext_resource type="Script" uid="uid://dx6au4i1aq20w" path="res://scripts/telejembatan.gd" id="4_mk7ll"]
 [ext_resource type="Script" uid="uid://ck76y45jun6m2" path="res://scripts/telebanjir.gd" id="5_v7xt4"]
-[ext_resource type="Script" uid="uid://cd5p32055pt1a" path="res://scripts/telechoosenpath.gd" id="6_ncx4k"]
+[ext_resource type="Script" uid="uid://cke21sb1fqjpp" path="res://scripts/teleport_area_2.gd" id="6_ncx4k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
 size = Vector2(83.5, 167)
@@ -67,6 +67,7 @@ shape = SubResource("RectangleShape2D_csub3")
 [node name="TeleportArea4" type="Area2D" parent="." unique_id=1637063031]
 position = Vector2(155, -780)
 script = ExtResource("6_ncx4k")
+target_scene = "uid://cqbkhbcuir4ph"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TeleportArea4" unique_id=1016666896]
 position = Vector2(1277, 300)

@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dfhtj0myykdoy" path="res://scenes/mainPlayer.tscn" id="3_v1ujs"]
 [ext_resource type="Texture2D" uid="uid://v2o40w67a8dc" path="res://assets/maps/cutscene/banjir.png" id="4_on7et"]
 [ext_resource type="Script" uid="uid://bl6t88q23f65o" path="res://scripts/storm_controller.gd" id="5_v1ujs"]
+[ext_resource type="Script" uid="uid://cke21sb1fqjpp" path="res://scripts/teleport_area_2.gd" id="7_g0ek0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tanh2"]
 texture = ExtResource("2_u6tvv")
@@ -909,6 +910,9 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_tanh2")
 sources/1 = SubResource("TileSetAtlasSource_g0ek0")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rf1d"]
+size = Vector2(344, 24)
+
 [node name="cutscene jembatan" type="Node2D" unique_id=1566337618]
 script = ExtResource("1_u6tvv")
 
@@ -938,5 +942,14 @@ script = ExtResource("5_v1ujs")
 max_strike_interval = 10.0
 rain_volume_db = -9.0
 thunder_volume_db = -2.0
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1709003242]
+script = ExtResource("7_g0ek0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2078366168]
+position = Vector2(-12, 543)
+shape = SubResource("RectangleShape2D_1rf1d")
+
+[connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 
 [editable path="mainPlayer"]
