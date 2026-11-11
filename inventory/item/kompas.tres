@@ -9,5 +9,8 @@ region = Rect2(278, 279, 20, 24)
 
 [resource]
 script = ExtResource("1_bkhuf")
+name = "Kompas"
 texture = SubResource("AtlasTexture_4efiy")
+description = "Penunjuk arah tanpa baterai atau sinyal."
+importance_reason = "Membantu saat berjalan di tempat asing, tapi bukan barang utama. Menghafal jalur evakuasi lebih penting."
 metadata/_custom_type_script = "uid://cr1j0ooxyu2dc"

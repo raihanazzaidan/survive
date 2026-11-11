@@ -9,5 +9,9 @@ region = Rect2(209, 213, 27, 23)
 
 [resource]
 script = ExtResource("1_5ossc")
+name = "Kotak P3K"
 texture = SubResource("AtlasTexture_qctmf")
+description = "Perban, plester, antiseptik, dan obat untuk pertolongan pertama."
+importance = 0
+importance_reason = "Saat banjir luka dan sakit bisa terjadi, kotak P3K berisi alat pertolongan sementara dan obat-obatan."
 metadata/_custom_type_script = "uid://cr1j0ooxyu2dc"

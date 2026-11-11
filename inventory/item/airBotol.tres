@@ -9,5 +9,9 @@ region = Rect2(280, 82, 15, 30)
 
 [resource]
 script = ExtResource("1_yvg8v")
+name = "Air Mineral"
 texture = SubResource("AtlasTexture_yvg8v")
+description = "Air putih bersih yang aman untuk langsung diminum."
+importance = 0
+importance_reason = " Saat banjir, air keran atau sumur menjadi kotor dan penuh kuman penyakit. Kita wajib membawa bekal air bersih agar tidak kehausan dan tidak sakit perut saat evakuasi."
 metadata/_custom_type_script = "uid://cr1j0ooxyu2dc"

@@ -9,5 +9,9 @@ region = Rect2(271, 144, 34, 33)
 
 [resource]
 script = ExtResource("1_l80cp")
+name = "Sleeping Bag"
 texture = SubResource("AtlasTexture_2yd1b")
+description = "Penghangat tubuh saat beristirahat."
+importance = 2
+importance_reason = "Besar, berat, dan sulit kering bila basah, jadi menyulitkan saat harus bergerak cepat."
 metadata/_custom_type_script = "uid://cr1j0ooxyu2dc"

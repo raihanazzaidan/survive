@@ -6,7 +6,37 @@ extends Control
 @onready var thunder_player = $ThunderPlayer
 var button_type = null
 
+# ======================= PARALLAX =======================
+# Urutan = dari paling belakang ke paling depan (sama dengan urutan node di scene).
+# Nilai   = seberapa jauh layer bergeser mengikuti mouse (0 = diam, 1 = paling bergerak).
+# Silakan ubah angkanya sesuai selera.
+const PARALLAX_DEPTHS := {
+	"background": 0.0,
+	"foreground": 0.1,
+	"foreground2": 0.2,
+	"bush1": 0.35,
+	"bush2": 0.5,
+	"bush3": 0.65,
+	"island": 0.8,
+	"island2": 1.0,
+}
+
+## Pergeseran maksimum layer terdepan (dalam piksel ruang 1920x1080).
+@export var parallax_strength := 40.0
+## Makin besar = makin cepat mengejar mouse. Tidak tergantung FPS.
+@export var parallax_smoothing := 6.0
+## Linear = gerakan halus tanpa shimmer. Matikan kalau mau tetap Nearest (pixel tajam).
+@export var parallax_linear_filter := true
+
+@onready var layer_root: Node2D = $Node2D
+var _layers: Array[Sprite2D] = []
+var _parallax := Vector2.ZERO
+
+
 func _ready() -> void:
+	_setup_parallax()
+	get_viewport().size_changed.connect(_fit_parallax_layers)
+
 	WeatherFX.default_pixel_size = 4 
 	
 	var weather_layer = $Node2D/WeatherLayer # (Sesuaikan dengan nama node layer cuaca kamu)
@@ -29,6 +59,53 @@ func _ready() -> void:
 	rain_player.play()
 	
 	_atur_waktu_petir()
+
+
+func _setup_parallax() -> void:
+	for layer_name in PARALLAX_DEPTHS:
+		var s := layer_root.get_node_or_null(NodePath(layer_name)) as Sprite2D
+		if s == null:
+			push_warning("Parallax: layer '%s' tidak ditemukan" % layer_name)
+			continue
+		# Matikan _process lama di script layer (position += mouse * delta) -- itu sumber bug.
+		s.set_process(false)
+		s.set_meta("depth", PARALLAX_DEPTHS[layer_name])
+		if parallax_linear_filter:
+			s.texture_filter = CanvasItem.TEXTURE_FILTER_LINEAR
+		_layers.append(s)
+	_fit_parallax_layers()
+
+
+# Perbesar semua layer sedikit (overscan) supaya tepinya tidak pernah terlihat
+# saat digeser, juga saat jendela lebih lebar dari 16:9 (stretch aspect = expand).
+func _fit_parallax_layers() -> void:
+	var vp := get_viewport_rect().size
+	var root_scale := layer_root.global_scale
+	var need := vp + Vector2(parallax_strength, parallax_strength) * 2.0
+	var k := 1.0
+	for s in _layers:
+		if s.texture == null:
+			continue
+		var tex_px := s.texture.get_size() * root_scale
+		k = maxf(k, maxf(need.x / tex_px.x, need.y / tex_px.y))
+	# Satu faktor untuk semua layer, supaya posisi antar layer tidak berubah.
+	for s in _layers:
+		s.scale = Vector2.ONE * k
+
+
+func _process(delta: float) -> void:
+	var vp := get_viewport_rect().size
+	var target := (get_global_mouse_position() / vp - Vector2(0.5, 0.5)) * 2.0
+	target = target.clamp(Vector2(-1, -1), Vector2(1, 1))
+	# Smoothing yang tidak tergantung frame rate.
+	_parallax = _parallax.lerp(target, 1.0 - exp(-parallax_smoothing * delta))
+
+	var base := layer_root.to_local(vp * 0.5)   # tengah layar, di ruang lokal Node2D
+	var root_scale := layer_root.global_scale
+	for s in _layers:
+		var depth: float = s.get_meta("depth")
+		s.position = base - _parallax * parallax_strength * depth / root_scale
+
 
 func _atur_waktu_petir() -> void:
 	# Atur waktu acak petir berikutnya antara 3 sampai 10 detik
