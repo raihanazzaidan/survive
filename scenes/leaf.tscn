@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://b854ktidq4gty"]
+
+[ext_resource type="Texture2D" uid="uid://de1ihd3b0y27h" path="res://assets/maps/ext/mapbanjir.png" id="1_wmchb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4r3pj"]
+atlas = ExtResource("1_wmchb")
+region = Rect2(192, 768, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6846"]
+atlas = ExtResource("1_wmchb")
+region = Rect2(256, 768, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2xad"]
+atlas = ExtResource("1_wmchb")
+region = Rect2(320, 768, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nx2nx"]
+atlas = ExtResource("1_wmchb")
+region = Rect2(448, 768, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hh1i6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4r3pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6846")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2xad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nx2nx")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Leaf" type="AnimatedSprite2D" unique_id=402573613]
+sprite_frames = SubResource("SpriteFrames_hh1i6")
+autoplay = "default"

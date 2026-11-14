@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bovifc30yafg0"]
+
+[ext_resource type="Script" uid="uid://dxvdb6pgfb2w5" path="res://scripts/game_completed.gd" id="1_b0i7e"]
+
+[node name="GameCompleted" type="CanvasLayer" unique_id=232447358]
+script = ExtResource("1_b0i7e")

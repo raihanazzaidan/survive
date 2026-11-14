@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://c7ehpyj1j2rmv"]
+
+[ext_resource type="Script" uid="uid://um13ll1u531y" path="res://scenes/cutscene_animasi_banjir.gd" id="1_8kpui"]
+[ext_resource type="Texture2D" uid="uid://dftd0kemy8gdc" path="res://assets/maps/cutscene/screen1.png" id="1_git35"]
+[ext_resource type="Texture2D" uid="uid://cdk53o11mncug" path="res://assets/maps/cutscene/screen2.png" id="3_kgc6j"]
+
+[node name="AnimasiBanjir" type="Control" unique_id=387863191]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8kpui")
+previous_scene_path = "uid://dwbohrfhrjui8"
+previous_spawn_name = "SpawnJembatan"
+
+[node name="BackgroundA" type="TextureRect" parent="." unique_id=1126098141]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_git35")
+expand_mode = 1
+
+[node name="BackgroundB" type="TextureRect" parent="." unique_id=1219203997]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_kgc6j")
+
+[node name="Water" type="TextureRect" parent="." unique_id=1686529102]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch_mode = 6
+
+[node name="FadeBlack" type="ColorRect" parent="." unique_id=1752449099]
+z_index = 1000
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="RainAudio" type="AudioStreamPlayer" parent="." unique_id=962510011]

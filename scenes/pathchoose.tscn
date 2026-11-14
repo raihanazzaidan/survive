@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://dfhtj0myykdoy" path="res://scenes/mainPlayer.tscn" id="2_cwbmg"]
 [ext_resource type="Script" uid="uid://dx6au4i1aq20w" path="res://scripts/telejembatan.gd" id="4_mk7ll"]
 [ext_resource type="Script" uid="uid://ck76y45jun6m2" path="res://scripts/telebanjir.gd" id="5_v7xt4"]
-[ext_resource type="Script" uid="uid://cke21sb1fqjpp" path="res://scripts/teleport_area_2.gd" id="6_ncx4k"]
+[ext_resource type="Script" uid="uid://dmp0hgqtcehwy" path="res://scripts/teleevak.gd" id="6_ncx4k"]
+[ext_resource type="Script" path="res://scripts/ui/dialogue_trigger.gd" id="7_dlgtrig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
 size = Vector2(83.5, 167)
@@ -22,6 +23,9 @@ size = Vector2(101, 1845)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tkj6s"]
 size = Vector2(2337, 105)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ncx4k"]
+size = Vector2(217.5, 1249)
 
 [node name="Node2D" type="Node2D" unique_id=487094545]
 y_sort_enabled = true
@@ -48,6 +52,7 @@ position = Vector2(-600, -24)
 [node name="TeleportArea2" type="Area2D" parent="." unique_id=1062268910]
 position = Vector2(155, -780)
 script = ExtResource("4_mk7ll")
+target_scene = "uid://c7ehpyj1j2rmv"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TeleportArea2" unique_id=1955108791]
 position = Vector2(1277, 748)
@@ -64,7 +69,7 @@ shape = SubResource("RectangleShape2D_csub3")
 [node name="TeleportArea4" type="Area2D" parent="." unique_id=1637063031]
 position = Vector2(155, -780)
 script = ExtResource("6_ncx4k")
-target_scene = "res://scenes/choosenpath.tscn"
+target_scene = "uid://8yv0lx7jhpbh"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TeleportArea4" unique_id=1016666896]
 position = Vector2(1277, 300)
@@ -109,8 +114,20 @@ shape = SubResource("RectangleShape2D_tkj6s")
 position = Vector2(416, -1144)
 shape = SubResource("RectangleShape2D_tkj6s")
 
+
+[node name="popUpUI" type="Area2D" parent="." unique_id=1150101224]
+position = Vector2(219, 44)
+script = ExtResource("7_dlgtrig")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="popUpUI" unique_id=1915774989]
+position = Vector2(181, -44.5)
+shape = SubResource("RectangleShape2D_ncx4k")
+
+[node name="SpawnKembaliJalur" type="Marker2D" parent="." unique_id=1452749320 groups=["spawn_points"]]
+
 [connection signal="body_entered" from="TeleportArea2" to="TeleportArea2" method="_on_body_entered"]
 [connection signal="body_entered" from="TeleportArea3" to="TeleportArea3" method="_on_body_entered"]
 [connection signal="body_entered" from="TeleportArea4" to="TeleportArea4" method="_on_body_entered"]
+[connection signal="body_entered" from="popUpUI" to="popUpUI" method="_on_body_entered"]
 
 [editable path="mainPlayer"]
