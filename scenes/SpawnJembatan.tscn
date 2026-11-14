@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c7fvqikx38cjb" path="res://assets/maps/cutscene/jembatan.png" id="2_u6tvv"]
 [ext_resource type="PackedScene" uid="uid://dfhtj0myykdoy" path="res://scenes/mainPlayer.tscn" id="3_v1ujs"]
 [ext_resource type="Script" uid="uid://bl6t88q23f65o" path="res://scripts/storm_controller.gd" id="5_v1ujs"]
-[ext_resource type="Script" uid="uid://cke21sb1fqjpp" path="res://scripts/teleport_area_2.gd" id="6_tanh2"]
+[ext_resource type="Script" uid="uid://c8j6inqkd45c8" path="res://scenes/teleport_area_2.gd" id="6_tanh2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tanh2"]
 texture = ExtResource("2_u6tvv")
@@ -411,6 +411,9 @@ position = Vector2(-2, 475)
 
 [node name="Camera2D" parent="mainPlayer" index="2" unique_id=1865145736]
 zoom = Vector2(1.12, 1.12)
+
+[node name="SpawnJembatan2" type="Marker2D" parent="." unique_id=1228599719]
+position = Vector2(-4, 271)
 
 [node name="WeatherLayer" type="Node2D" parent="." unique_id=1078880719]
 z_index = 10

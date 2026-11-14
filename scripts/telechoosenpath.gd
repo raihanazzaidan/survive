@@ -1,10 +1,11 @@
+
 extends Node2D
 
-@export var walk_duration: float = 1.0               # Durasi player berjalan otomatis
-@export var walk_distance: Vector2 = Vector2(60, 0)  # Jarak pergerakan otomatis (misal: 40px ke bawah)
+@export var walk_duration: float = 1.0
+@export var walk_distance: Vector2 = Vector2(60, 0)
 
-@onready var ground_layer: TileMapLayer = $ground
-@onready var player: CharacterBody2D = $mainPlayer
+@onready var ground_layer: TileMapLayer = get_parent().get_node_or_null("ground")
+@onready var player: CharacterBody2D = get_parent().get_node_or_null("mainPlayer")
 
 
 func _ready() -> void:
@@ -43,7 +44,7 @@ func play_intro_walk() -> void:
 	
 	var anim_sprite = player.get_node_or_null("AnimatedSprite2D")
 	if anim_sprite:
-		anim_sprite.play("run1") # Sesuaikan nama animasi jalan Anda
+		anim_sprite.play("run1")
 		
 	var tween = create_tween()
 	var target_pos = player.position + walk_distance
@@ -52,9 +53,9 @@ func play_intro_walk() -> void:
 	await tween.finished
 	
 	if anim_sprite:
-		anim_sprite.play("idle1") # Sesuaikan nama animasi diam Anda
+		anim_sprite.play("idle1")
 		
-	# Kembalikan kontrol ke player
+	# Kembalikan kontrol player
 	_set_player_control(true)
 
 

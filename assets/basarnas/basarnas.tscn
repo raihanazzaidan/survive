@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://8w15tykgdkwg"]
+
+[ext_resource type="Shader" uid="uid://cqvqcukvec0gd" path="res://assets/basarnas/remove_bg.gdshader" id="1_6kpta"]
+[ext_resource type="VideoStream" uid="uid://bn4yh1o0bmxp6" path="res://assets/basarnas/basarnas_kanan.ogv" id="1_7rp4x"]
+[ext_resource type="Script" path="res://assets/basarnas/basarnas.gd" id="1_81v0y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_17lwp"]
+shader = ExtResource("1_6kpta")
+shader_parameter/threshold = 0.15
+shader_parameter/softness = 0.08
+
+[node name="Basarnas" type="VideoStreamPlayer" unique_id=1111290718]
+material = SubResource("ShaderMaterial_17lwp")
+stream = ExtResource("1_7rp4x")
+autoplay = true
+loop = true
+script = ExtResource("1_81v0y")

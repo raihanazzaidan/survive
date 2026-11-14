@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://shs7yvjt286t"]
+
+[ext_resource type="Texture2D" uid="uid://ntp2iyemov7b" path="res://assets/maps/ext/water.png" id="1_nfv3r"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pf54m"]
+atlas = ExtResource("1_nfv3r")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e55vi"]
+atlas = ExtResource("1_nfv3r")
+region = Rect2(448, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0m042"]
+atlas = ExtResource("1_nfv3r")
+region = Rect2(832, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6x7mj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pf54m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e55vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0m042")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="WaterLeft" type="AnimatedSprite2D" unique_id=1650037255]
+rotation = -1.5649917
+sprite_frames = SubResource("SpriteFrames_6x7mj")
+autoplay = "default"
