@@ -39,6 +39,11 @@ class_name StormController
 ## Warna pencahayaan lingkungan (CanvasModulate)
 @export var ambient_darkness: Color = Color(0.48, 0.50, 0.60, 1.0)
 
+@export_group("Kontrol Cutscene")
+## true = hujan & suara hujan langsung aktif saat scene dimuat (perilaku lama, dipakai scene gameplay).
+## false = cuaca baru menyala saat activate_weather() dipanggil (dipakai opening cinematic).
+@export var start_weather_on_ready: bool = true
+
 @export_group("Audio")
 @export var play_sounds: bool = true
 @export var rain_volume_db: float = -4.0
@@ -60,10 +65,13 @@ var _strike_timer: Timer
 var _camera: Camera2D
 var _shake_remaining: float = 0.0
 var _shake_power: float = 0.0
+var _weather_active: bool = false
+var _ramp_tween: Tween
 
 
 func _ready() -> void:
 	z_index = 10
+	_weather_active = start_weather_on_ready
 	
 	# 1. Atur Suasana Mendung (CanvasModulate)
 	if enable_storm_darkness:
@@ -73,8 +81,8 @@ func _ready() -> void:
 	if play_sounds:
 		_setup_audio()
 		
-	# 3. Atur Hujan Deras via WeatherFX
-	if rain_enabled:
+	# 3. Atur Hujan Deras via WeatherFX (ditunda sampai activate_weather() bila diminta)
+	if rain_enabled and start_weather_on_ready:
 		_setup_rain()
 		
 	# 4. Atur Sistem Visual Petir (Flash & Sambaran Bolt)
@@ -98,7 +106,7 @@ func _setup_audio() -> void:
 		_rain_audio.name = "RainAudioPlayer"
 		_rain_audio.stream = rain_stream
 		_rain_audio.volume_db = rain_volume_db
-		_rain_audio.autoplay = true
+		_rain_audio.autoplay = start_weather_on_ready
 		add_child(_rain_audio)
 	
 	# Audio Petir
@@ -174,6 +182,51 @@ func _setup_lightning() -> void:
 	_branch_core.default_color = Color(1.0, 1.0, 1.0, 0.9)
 	_branch_core.visible = false
 	_flash_layer.add_child(_branch_core)
+
+
+## Menyalakan hujan + suara hujan bila belum aktif (dipakai bila start_weather_on_ready = false).
+func activate_weather() -> void:
+	if _weather_active:
+		return
+	_weather_active = true
+	if rain_enabled and _rain_fx == null:
+		_setup_rain()
+	if _rain_audio and not _rain_audio.playing:
+		_rain_audio.play()
+
+
+## Menaikkan hujan secara bertahap dari tipis ke intensitas penuh selama `duration` detik.
+func ramp_rain(duration: float) -> void:
+	if _ramp_tween:
+		_ramp_tween.kill()
+	duration = maxf(duration, 0.01)
+	var target_intensity := rain_intensity
+	var target_density := rain_density
+	var quiet_db := rain_volume_db - 24.0
+	_apply_rain_level(0.0, quiet_db, target_intensity, target_density)
+	_ramp_tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	_ramp_tween.tween_method(func(k: float) -> void: _apply_rain_level(k, quiet_db, target_intensity, target_density), 0.0, 1.0, duration)
+
+
+func _apply_rain_level(k: float, quiet_db: float, target_intensity: float, target_density: float) -> void:
+	if is_instance_valid(_rain_fx):
+		_rain_fx.set_param(&"intensity", lerpf(0.15, 1.0, k) * target_intensity)
+		_rain_fx.set_param(&"density", lerpf(0.25, 1.0, k) * target_density)
+	if _rain_audio:
+		_rain_audio.volume_db = lerpf(quiet_db, rain_volume_db, k)
+
+
+## Menyalakan petir otomatis berkala dengan interval acak antara min_interval..max_interval detik.
+func start_auto_lightning(min_interval: float = -1.0, max_interval: float = -1.0) -> void:
+	if min_interval > 0.0:
+		min_strike_interval = min_interval
+	if max_interval > 0.0:
+		max_strike_interval = maxf(max_interval, min_strike_interval)
+	lightning_enabled = true
+	if _strike_timer == null:
+		_start_lightning_timer()
+	else:
+		_queue_next_strike()
 
 
 func _start_lightning_timer() -> void:

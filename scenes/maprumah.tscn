@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://cjh0kui6ufwcu" path="res://scripts/tpIntExt.gd" id="4_5rjre"]
 [ext_resource type="Script" uid="uid://bl6t88q23f65o" path="res://scripts/storm_controller.gd" id="5_storm"]
 [ext_resource type="Script" uid="uid://cke21sb1fqjpp" path="res://scripts/teleport_area_2.gd" id="6_bavhc"]
+[ext_resource type="Script" path="res://scripts/ui/dialogue_trigger.gd" id="7_dlgtrig"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4iw3"]
 texture = ExtResource("1_b4iw3")
@@ -123,6 +124,10 @@ shape = SubResource("RectangleShape2D_door_ext")
 
 [node name="popUpUI" type="Area2D" parent="." unique_id=1759572522]
 position = Vector2(219, 44)
+script = ExtResource("7_dlgtrig")
+dialogue_id = "dialog_maprumah"
+title = "Perjalanan Dimulai"
+lines = PackedStringArray("Aku sudah di luar rumah. Hujan masih deras dan air sungai terus naik, jadi aku tidak boleh berlama-lama.", "Tujuanku adalah tempat evakuasi di area yang lebih tinggi. Aku harus menjauhi tepi sungai dan memilih jalan yang menjauhi air.", "Ingat, air banjir setinggi lutut yang mengalir deras bisa menjatuhkan orang dewasa. Aku tidak akan menerobosnya.", "Jalan keluar ada di sisi kanan. Di depan, aku akan bertemu persimpangan dan harus memilih jalur dengan hati-hati.")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="popUpUI" unique_id=1259134676]
 position = Vector2(13.25, 180)

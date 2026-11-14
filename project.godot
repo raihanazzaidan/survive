@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GameManager="*uid://bdoywdppmjh7i"
 SceneTransition="*uid://dmiofby1cboxr"
+DialogueBox="*res://scripts/ui/dialogue_box.gd"
 
 [display]
 

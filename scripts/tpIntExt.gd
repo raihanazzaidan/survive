@@ -29,15 +29,23 @@ func _on_body_exited(body: Node2D) -> void:
 		player_in_range = false
 
 func _unhandled_input(event: InputEvent) -> void:
+	if GameManager.dialogue_active:
+		return
 	if player_in_range and not GameManager.is_transitioning and event.is_action_pressed("use") and not event.is_echo():
 		teleport()
 
 func _process(_delta: float) -> void:
+	if GameManager.dialogue_active:
+		return
 	if player_in_range and not GameManager.is_transitioning and Input.is_action_just_pressed("use"):
 		teleport()
 
 func teleport() -> void:
 	if is_teleporting or GameManager.is_transitioning:
+		return
+	# Scene boleh menahan perpindahan (mis. interior mengingatkan barang yang belum diambil).
+	var scene := get_tree().current_scene
+	if scene and scene.has_method("can_exit") and not scene.can_exit():
 		return
 	if target_scene != "":
 		is_teleporting = true
