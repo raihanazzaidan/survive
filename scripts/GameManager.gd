@@ -4,6 +4,23 @@ extends Node
 var target_spawn_point: String = ""
 var is_transitioning: bool = false
 var has_played_intro_cutscene: bool = false
+
+# --- Status dialog (dipakai DialogueBox, player, dan interaksi) ---
+# true selama kotak dialog terbuka; player & tombol interaksi membaca flag ini.
+var dialogue_active: bool = false
+# Dialog sekali-tampil yang sudah pernah muncul (id -> true).
+var _seen_dialogues: Dictionary = {}
+
+# --- Jalur setelah cutscene jembatan/banjir ---
+# Nama Marker2D di pathchoose.tscn tempat player muncul lagi setelah cutscene.
+var last_path_spawn: String = ""
+# true jika pathchoose.tscn dimuat ulang setelah cutscene (jangan jalan otomatis lagi).
+var returning_from_detour: bool = false
+
+# --- Progres Emergency Bag di dalam rumah ---
+# Kunci barang yang sudah diambil (mis. "senter"), dan jumlah total barang di rumah.
+var bag_collected: Dictionary = {}
+var bag_total: int = 0
 #var has_backpack: bool = false
 var _canvas_layer: CanvasLayer
 var _fade_rect: ColorRect
@@ -48,3 +65,15 @@ func change_scene_with_fade(target_scene: String, spawn_point: String = "", dura
 	
 	_fade_rect.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	is_transitioning = false
+
+
+func has_seen(dialogue_id: String) -> bool:
+	return _seen_dialogues.has(dialogue_id)
+
+
+func mark_seen(dialogue_id: String) -> void:
+	_seen_dialogues[dialogue_id] = true
+
+
+func bag_remaining() -> int:
+	return maxi(bag_total - bag_collected.size(), 0)

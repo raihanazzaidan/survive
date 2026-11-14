@@ -14,7 +14,7 @@ func _physics_process(delta):
 		move_and_slide() 
 		return
 
-	if GameManager.is_transitioning:
+	if GameManager.is_transitioning or GameManager.dialogue_active:
 		velocity = Vector2.ZERO
 		move_and_slide()
 		anim.play("idle1")

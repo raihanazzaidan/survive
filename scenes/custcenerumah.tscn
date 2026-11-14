@@ -132,8 +132,17 @@ tile_set = ExtResource("3_ky2xe")
 [node name="WeatherLayer" type="Node2D" parent="." unique_id=2013232568]
 z_index = 10
 script = ExtResource("6_abhy3")
+rain_enabled = true
+rain_density = 0.95
+rain_wind = 0.42
+rain_intensity = 1.5
+rain_color = Color(0.88, 0.94, 1, 0.92)
+lightning_enabled = false
 min_strike_interval = 3.0
 max_strike_interval = 7.0
+shake_intensity = 6.0
+enable_storm_darkness = false
+start_weather_on_ready = false
 rain_volume_db = -9.0
 thunder_volume_db = -2.0
 
@@ -143,4 +152,3 @@ zoom = Vector2(0.9, 0.9)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CutsceneCamera" unique_id=79886221]
 libraries/ = SubResource("AnimationLibrary_jkif5")
-autoplay = &"kamera_geser"

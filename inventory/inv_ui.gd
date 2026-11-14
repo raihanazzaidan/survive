@@ -34,6 +34,8 @@ func update_slots():
 		_clear_selection()
 
 func _process(delta):
+	if GameManager.dialogue_active:
+		return
 	if Input.is_action_just_pressed("inventory"):
 		if is_open:
 			close()
