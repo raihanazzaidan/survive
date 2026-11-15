@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c8ankfrt7xo1t" path="res://scripts/custcenerumah.gd" id="1_8i45k"]
 [ext_resource type="Texture2D" uid="uid://cpbf5e1fg66n3" path="res://assets/maps/ext/ext.png" id="2_8ymm1"]
 [ext_resource type="TileSet" uid="uid://da2r7iax5av6j" path="res://assets/maps/ext/outdoor_tileset.tres" id="3_ky2xe"]
+[ext_resource type="AudioStream" uid="uid://mbgxyx2udl7t" path="res://assets/sfx/env.mp3" id="5_jkif5"]
 [ext_resource type="Script" uid="uid://bl6t88q23f65o" path="res://scripts/storm_controller.gd" id="6_abhy3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4iw3"]
@@ -41,6 +42,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector2(0.9, 0.9)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_8i45k"]
 resource_name = "kamera_geser"
@@ -68,6 +81,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0.7, 0.7), Vector2(0.9, 0.9)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AudioStreamPlayer2D:volume_db")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.1333334, 3.6666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, -80.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jkif5"]
@@ -132,9 +157,6 @@ tile_set = ExtResource("3_ky2xe")
 [node name="WeatherLayer" type="Node2D" parent="." unique_id=2013232568]
 z_index = 10
 script = ExtResource("6_abhy3")
-rain_enabled = true
-rain_density = 0.95
-rain_wind = 0.42
 rain_intensity = 1.5
 rain_color = Color(0.88, 0.94, 1, 0.92)
 lightning_enabled = false
@@ -145,6 +167,10 @@ enable_storm_darkness = false
 start_weather_on_ready = false
 rain_volume_db = -9.0
 thunder_volume_db = -2.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1239610664]
+stream = ExtResource("5_jkif5")
+autoplay = true
 
 [node name="CutsceneCamera" type="Camera2D" parent="." unique_id=15661394]
 offset = Vector2(430.66, -249.81)

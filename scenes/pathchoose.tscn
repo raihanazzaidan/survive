@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dx6au4i1aq20w" path="res://scripts/telejembatan.gd" id="4_mk7ll"]
 [ext_resource type="Script" uid="uid://ck76y45jun6m2" path="res://scripts/telebanjir.gd" id="5_v7xt4"]
 [ext_resource type="Script" uid="uid://dmp0hgqtcehwy" path="res://scripts/teleevak.gd" id="6_ncx4k"]
-[ext_resource type="Script" path="res://scripts/ui/dialogue_trigger.gd" id="7_dlgtrig"]
+[ext_resource type="Script" uid="uid://1j2q644u1rx6" path="res://scripts/ui/dialogue_trigger.gd" id="7_dlgtrig"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
 size = Vector2(83.5, 167)
@@ -52,7 +52,7 @@ position = Vector2(-600, -24)
 [node name="TeleportArea2" type="Area2D" parent="." unique_id=1062268910]
 position = Vector2(155, -780)
 script = ExtResource("4_mk7ll")
-target_scene = "uid://c7ehpyj1j2rmv"
+target_scene = "uid://dwbohrfhrjui8"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TeleportArea2" unique_id=1955108791]
 position = Vector2(1277, 748)
@@ -76,10 +76,10 @@ position = Vector2(1277, 300)
 shape = SubResource("RectangleShape2D_csub3")
 
 [node name="SpawnDariJembatan" type="Marker2D" parent="." unique_id=1355805972 groups=["spawn_points"]]
-position = Vector2(1180, -24)
+position = Vector2(1432, -32)
 
 [node name="SpawnDariBanjir" type="Marker2D" parent="." unique_id=1880912623 groups=["spawn_points"]]
-position = Vector2(1180, 424)
+position = Vector2(1432, 416)
 
 [node name="WeatherLayer" type="Node2D" parent="." unique_id=1041869989]
 z_index = 10
@@ -114,7 +114,6 @@ shape = SubResource("RectangleShape2D_tkj6s")
 position = Vector2(416, -1144)
 shape = SubResource("RectangleShape2D_tkj6s")
 
-
 [node name="popUpUI" type="Area2D" parent="." unique_id=1150101224]
 position = Vector2(219, 44)
 script = ExtResource("7_dlgtrig")
@@ -124,6 +123,7 @@ position = Vector2(181, -44.5)
 shape = SubResource("RectangleShape2D_ncx4k")
 
 [node name="SpawnKembaliJalur" type="Marker2D" parent="." unique_id=1452749320 groups=["spawn_points"]]
+position = Vector2(1432, -480)
 
 [connection signal="body_entered" from="TeleportArea2" to="TeleportArea2" method="_on_body_entered"]
 [connection signal="body_entered" from="TeleportArea3" to="TeleportArea3" method="_on_body_entered"]

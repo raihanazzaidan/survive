@@ -1,10 +1,9 @@
-
 extends Node2D
 
 @export var walk_duration: float = 1.0
 @export var walk_distance: Vector2 = Vector2(60, 0)
-@export var return_run_distance: Vector2 = Vector2(-60, 0)
-@export var return_run_duration: float = 1.0
+@export var return_run_distance: Vector2 = Vector2(-120, 0)
+@export var return_run_duration: float = 0.8
 
 @onready var ground_layer: TileMapLayer = $ground
 @onready var player: CharacterBody2D = $mainPlayer
@@ -20,19 +19,20 @@ func _ready() -> void:
 	var is_returning = (
 		target_name == "SpawnKembaliJalur"
 		or target_name == "SpawnDariBanjir"
+		or target_name == "SpawnDariJembatan"
 	)
 
 	# Bersihkan target setelah player selesai membaca titik spawn.
 	GameManager.target_spawn_point = ""
 
+	if is_returning:
+		await play_intro_walk(true)
+	else:
+		await play_intro_walk()
+
 	# Bersihkan status kembali dari sistem upstream.
 	GameManager.returning_from_detour = false
 	GameManager.last_path_spawn = ""
-
-	if is_returning:
-		play_intro_walk(true)
-	else:
-		play_intro_walk()
 
 
 func setup_camera_limits() -> void:
@@ -78,11 +78,17 @@ func play_intro_walk(is_returning: bool = false) -> void:
 		anim_sprite.flip_h = target_direction.x < 0.0
 		anim_sprite.play("run1")
 
+	if player.has_method("start_footstep"):
+		player.start_footstep(true)
+
 	var tween = create_tween()
 	var target_pos = player.position + target_direction
 	tween.tween_property(player, "position", target_pos, movement_duration)
 
 	await tween.finished
+
+	if player.has_method("stop_footstep"):
+		player.stop_footstep()
 
 	if anim_sprite:
 		anim_sprite.play("idle1")

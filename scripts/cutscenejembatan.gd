@@ -10,10 +10,10 @@ func _ready() -> void:
 		if spawn_jembatan:
 			player.global_position = spawn_jembatan.global_position
 
-		# Membalik arah hadap player setelah keluar dari cutscene
+		# Membalik arah hadap player setelah masuk
 		var anim = player.get_node_or_null("AnimatedSprite2D")
 		if anim:
-			anim.flip_h = true
+			anim.flip_h = false
 
 		GameManager.target_spawn_point = ""
 
@@ -41,6 +41,8 @@ func setup_camera_limits() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body == player:
-		GameManager.target_spawn_point = "SpawnKembaliJalur"
+	if body == player or body.is_in_group("player") or body.name == "mainPlayer":
+		GameManager.target_spawn_point = "SpawnDariJembatan"
+		GameManager.saved_player_flip_h = true
+		GameManager.returning_from_detour = true
 		SceneTransition.change_scene("res://scenes/pathchoose.tscn")
