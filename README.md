@@ -1,0 +1,3 @@
+SURVIVE (Survival Understanding & Response through Virtual Interactive Venture Education) is an educational 2D pixel survival, resource management, and simulation game for PC. Designed to teach children disaster preparedness, it embeds real-world flood safety protocols directly into the gameplay. When heavy rain triggers a flood warning in a riverside neighborhood, players must quickly grab a single Emergency Bag to instantly equip their survival gear, then navigate to higher ground while avoiding fallen trees and downed power lines in floodwaters. Upon reaching safety, players must wash their hands before eating to restore stamina and listen to radio updates until the Search and Rescue (SAR) team arrives.
+
+🎮 Play it Online: https://afnankurniawan.itch.io/survive
