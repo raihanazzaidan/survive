@@ -18,6 +18,8 @@ var name_label: Label
 var badge_label: Label
 var desc_label: Label
 var reason_label: Label
+var drop_button: Button
+var _confirm_drop: bool = false
 
 func _ready():
 	inv.updated.connect(update_slots)
@@ -66,6 +68,7 @@ func _show_detail(ui_slot: InvUISlot, item: InvItem) -> void:
 		selected_ui_slot.set_selected(false)
 	selected_ui_slot = ui_slot
 	ui_slot.set_selected(true)
+	_reset_drop_button()
 
 	var info: Dictionary = IMPORTANCE_INFO[item.importance]
 	icon_rect.texture = item.texture
@@ -80,8 +83,27 @@ func _clear_selection() -> void:
 	if selected_ui_slot:
 		selected_ui_slot.set_selected(false)
 	selected_ui_slot = null
+	_reset_drop_button()
 	if detail_panel:
 		detail_panel.visible = false
+
+# ---------- Buang item ----------
+func _on_drop_pressed() -> void:
+	if selected_ui_slot == null or selected_ui_slot.current_slot == null:
+		return
+	# Klik pertama minta konfirmasi, klik kedua baru benar-benar membuang
+	if not _confirm_drop:
+		_confirm_drop = true
+		drop_button.text = "YAKIN? KLIK LAGI"
+		return
+	# Sinyal "updated" memanggil update_slots(); jika slot jadi kosong, pilihan otomatis dibersihkan
+	inv.remove_item(selected_ui_slot.current_slot)
+	_reset_drop_button()
+
+func _reset_drop_button() -> void:
+	_confirm_drop = false
+	if drop_button:
+		drop_button.text = "BUANG ITEM"
 
 # ---------- Membangun panel detail ----------
 func _make_label(font_size: int, color: Color = Color.WHITE) -> Label:
@@ -154,3 +176,15 @@ func _build_detail_panel() -> void:
 
 	reason_label = _make_label(22, Color(0.9, 0.9, 0.9))
 	box.add_child(reason_label)
+
+	box.add_child(HSeparator.new())
+
+	drop_button = Button.new()
+	drop_button.text = "BUANG ITEM"
+	drop_button.custom_minimum_size = Vector2(0, 56)
+	drop_button.add_theme_font_size_override("font_size", 24)
+	drop_button.add_theme_color_override("font_color", Color(0.94, 0.33, 0.31))
+	# Tanpa fokus keyboard, supaya tombol Space/Enter (mis. lompat) tidak ikut menekan tombol ini
+	drop_button.focus_mode = Control.FOCUS_NONE
+	drop_button.pressed.connect(_on_drop_pressed)
+	box.add_child(drop_button)

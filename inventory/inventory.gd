@@ -16,3 +16,13 @@ func insert(item_data: InvItem):
 			empty_slots[0].amount = 1
 			
 	updated.emit()
+
+# Buang item dari slot. Defaultnya membuang 1 buah; slot otomatis kosong jika jumlahnya habis.
+func remove_item(slot: InvSlot, amount: int = 1) -> void:
+	if slot == null or slot.item == null or amount <= 0:
+		return
+	slot.amount -= amount
+	if slot.amount <= 0:
+		slot.item = null
+		slot.amount = 0
+	updated.emit()
