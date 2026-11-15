@@ -1,4 +1,3 @@
-
 extends Node2D
 
 @onready var ground_layer: TileMapLayer = $ground
@@ -34,7 +33,9 @@ func _on_body_entered(body: Node2D) -> void:
 	if is_returning:
 		return
 
-	if body == player:
+	if body == player or body.is_in_group("player") or body.name == "mainPlayer":
 		is_returning = true
 		GameManager.target_spawn_point = "SpawnDariBanjir"
+		GameManager.saved_player_flip_h = true
+		GameManager.returning_from_detour = true
 		SceneTransition.change_scene("res://scenes/pathchoose.tscn")

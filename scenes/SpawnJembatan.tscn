@@ -387,7 +387,13 @@ tile_size = Vector2i(64, 64)
 sources/0 = SubResource("TileSetAtlasSource_tanh2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8o58o"]
-size = Vector2(226, 24)
+size = Vector2(800, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_csub3"]
+size = Vector2(1763.5, 1056)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihjpi"]
+size = Vector2(175, 314)
 
 [node name="cutscene jembatan" type="Node2D" unique_id=1566337618]
 script = ExtResource("1_u6tvv")
@@ -407,13 +413,13 @@ tile_map_data = PackedByteArray("AAAMAAIAAAAAAAAAAAAMAAMAAAAAAAEAAAAMAAQAAAAAAAI
 tile_set = SubResource("TileSet_nqtul")
 
 [node name="mainPlayer" parent="." unique_id=264173668 instance=ExtResource("3_v1ujs")]
-position = Vector2(-2, 475)
+position = Vector2(-2, 450)
 
 [node name="Camera2D" parent="mainPlayer" index="2" unique_id=1865145736]
 zoom = Vector2(1.12, 1.12)
 
-[node name="SpawnJembatan2" type="Marker2D" parent="." unique_id=1228599719]
-position = Vector2(-4, 271)
+[node name="SpawnJembatan" type="Marker2D" parent="." unique_id=1228599719 groups=["spawn_points"]]
+position = Vector2(-2, 450)
 
 [node name="WeatherLayer" type="Node2D" parent="." unique_id=1078880719]
 z_index = 10
@@ -424,10 +430,25 @@ thunder_volume_db = -2.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1913370769]
 script = ExtResource("6_tanh2")
+target_spawn = "SpawnDariJembatan"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1156432946]
-position = Vector2(-4, 545)
+position = Vector2(-4, 510)
 shape = SubResource("RectangleShape2D_8o58o")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=655083369]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1780568851]
+position = Vector2(-7.75, -231)
+shape = SubResource("RectangleShape2D_csub3")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=70934262]
+position = Vector2(-369, 397)
+shape = SubResource("RectangleShape2D_ihjpi")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=420438543]
+position = Vector2(405, 391)
+shape = SubResource("RectangleShape2D_ihjpi")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 

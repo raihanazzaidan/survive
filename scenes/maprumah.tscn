@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cjh0kui6ufwcu" path="res://scripts/tpIntExt.gd" id="4_5rjre"]
 [ext_resource type="Script" uid="uid://bl6t88q23f65o" path="res://scripts/storm_controller.gd" id="5_storm"]
 [ext_resource type="Script" uid="uid://cke21sb1fqjpp" path="res://scripts/teleport_area_2.gd" id="6_bavhc"]
-[ext_resource type="Script" path="res://scripts/ui/dialogue_trigger.gd" id="7_dlgtrig"]
+[ext_resource type="Script" uid="uid://1j2q644u1rx6" path="res://scripts/ui/dialogue_trigger.gd" id="7_dlgtrig"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b4iw3"]
 texture = ExtResource("1_b4iw3")

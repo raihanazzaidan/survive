@@ -911,7 +911,13 @@ sources/0 = SubResource("TileSetAtlasSource_tanh2")
 sources/1 = SubResource("TileSetAtlasSource_g0ek0")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1rf1d"]
-size = Vector2(344, 24)
+size = Vector2(800, 60)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g0ek0"]
+size = Vector2(1763.5, 1056)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lj1n8"]
+size = Vector2(175, 314)
 
 [node name="cutscene jembatan" type="Node2D" unique_id=1566337618]
 script = ExtResource("1_on7et")
@@ -945,10 +951,25 @@ thunder_volume_db = -2.0
 
 [node name="Area2D" type="Area2D" parent="." unique_id=1709003242]
 script = ExtResource("7_g0ek0")
+target_spawn = "SpawnDariBanjir"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2078366168]
-position = Vector2(-12, 543)
+position = Vector2(-12, 510)
 shape = SubResource("RectangleShape2D_1rf1d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=659331937]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=2024630662]
+position = Vector2(-9, -260)
+shape = SubResource("RectangleShape2D_g0ek0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=313969124]
+position = Vector2(-369, 397)
+shape = SubResource("RectangleShape2D_lj1n8")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1583882948]
+position = Vector2(405, 391)
+shape = SubResource("RectangleShape2D_lj1n8")
 
 [connection signal="body_entered" from="Area2D" to="Area2D" method="_on_body_entered"]
 
