@@ -69,7 +69,7 @@ shape = SubResource("RectangleShape2D_csub3")
 [node name="TeleportArea4" type="Area2D" parent="." unique_id=1637063031]
 position = Vector2(155, -780)
 script = ExtResource("6_ncx4k")
-target_scene = "uid://8yv0lx7jhpbh"
+target_scene = "uid://cqbkhbcuir4ph"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TeleportArea4" unique_id=1016666896]
 position = Vector2(1277, 300)

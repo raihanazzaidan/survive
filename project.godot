@@ -29,6 +29,10 @@ window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor]
+
+movie_writer/movie_file="/Users/afnankurniawan/Documents/survive movie/survive.avi"
+
 [input]
 
 walk_up={

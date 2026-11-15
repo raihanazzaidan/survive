@@ -79,6 +79,7 @@ position = Vector2(1592, 1734)
 [node name="TeleportArea4" type="Area2D" parent="." unique_id=1728262312]
 position = Vector2(155, -780)
 script = ExtResource("5_pok0e")
+target_scene = "uid://8yv0lx7jhpbh"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="TeleportArea4" unique_id=1802053261]
 position = Vector2(1321, 733.75)
