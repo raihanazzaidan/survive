@@ -48,6 +48,9 @@ func play_intro_walk() -> void:
 	if anim_sprite:
 		anim_sprite.play("walk_up1") # Sesuaikan nama animasi jalan Anda
 		
+	if player.has_method("start_footstep"):
+		player.start_footstep(false)
+
 	var tween = create_tween()
 	var target_pos = _hitung_target_jalan()
 	# Kecepatan jalan dijaga sama walau jaraknya bertambah.
@@ -55,6 +58,9 @@ func play_intro_walk() -> void:
 	tween.tween_property(player, "position", target_pos, duration)
 	
 	await tween.finished
+	
+	if player.has_method("stop_footstep"):
+		player.stop_footstep()
 	
 	if anim_sprite:
 		anim_sprite.play("idle1") # Sesuaikan nama animasi diam Anda
